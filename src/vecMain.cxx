@@ -1,10 +1,16 @@
+// main function to tie program together
+/*	- create vectors
+	- run dot product
+	- run cross product
+	- test dot product
+	- test cross product
+
+*/
+
+
 #include <iostream>
 #include <stdlib.h>
-
 #include <eigen3/Eigen/Dense>
-// Or possibly just
-// #include <Eigen/Dense>
-
 #include "vecDot.h"
 #include "vecMulTest.h"
 #include "vecCross.h"
@@ -12,12 +18,13 @@
 
 //using namespace Eigen;
 
-using namespace std;
+using namespace std; // normal namespace
 
-using Eigen::MatrixXf;
-using Eigen::VectorXf;
+using Eigen::MatrixXf; // import type from Eigen
+using Eigen::VectorXf; // import type from Eigen
 
 int main(int argc, const char* argv[]) {
+	cout << "Legacy Code to show matrix ops:" << endl;
 	MatrixXf m = MatrixXf::Random(3,3);
 	m = (m * 10);
 	cout << "m: " << endl << m << endl;
@@ -25,34 +32,38 @@ int main(int argc, const char* argv[]) {
 	v << 1, 2, 3 ;
 	cout << "m*v: " << endl << m*v << endl;
 
-	cout << "m first col:" << endl << m(0) << endl;
-	cout << m(1) << endl;
-	cout << m(2) << endl;
-
+	// create x and y vectors for dot product
 	VectorXf x(3);
 	x << m(0),m(1),m(2);
 	VectorXf y(3); 
 	y = v;
 
-	cout << "x: " << endl << x << endl;
-	cout << "y: " << endl << y << endl;
+	cout << "Program to show dot and cross with tests: " << endl << endl;
+
+	// Dot
+	cout << "x: " << endl << x << endl; // show x
+	cout << "y: " << endl << y << endl; // show y
+	cout << "Dot product of x and y: " << endl;
+	cout << dot_product(x,y,3) << endl;
+
+	// Cross 
 	Eigen::Vector3d p(1,2,3); // works with .cross
-	Eigen::Vector3d q(1,0,0);
+	Eigen::Vector3d q(1,0,0); // 
 	/* Eigen::VectorXf p(3);  // works with cross_product
 	Eigen::VectorXf q(3);
 	p << 1,2,3;
 	q << 1,0,0;
-	*/
-	cout << "p cross q with function:" << endl;
-	cout << cross_product(p,q) << endl;
-	cout << "test against eigen:" << p.cross(q) << endl;
-
-	//	TODO-- Connect!
+	*/ // alternate type scheme - saving code
+	cout << "p vector:" << endl << p << endl; // show p
+	cout << "q vector:" << endl << q << endl; // show q
+	cout << "p cross q with manual function:" << endl;
+	cout << cross_product(p,q) << endl; // 
+	cout << "p cross q with Eigen namespace function:" << p.cross(q) << endl;
 
 	// Test the methods
 	if (test_dot(x, y, 3)) {
 		printf("Dot Test passed\n");
-		//return 0;
+		//return 0; do not need to return yet...
 	}
 	else {
 		printf("Dot Test failed\n");

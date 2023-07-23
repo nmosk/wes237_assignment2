@@ -1,4 +1,5 @@
 // Include guard, one should be in all headers
+// Purpose: Declare cross_product function which will manually perform cross
 #ifndef VEC_CROSS_H
 #define VEC_CROSS_H
 

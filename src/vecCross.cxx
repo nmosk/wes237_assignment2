@@ -1,3 +1,5 @@
+// purpose: Define cross_product function to make and return crossed vectors
+
 #include "vecCross.h"
 
 Eigen::Vector3d cross_product(Eigen::Vector3d vec1, Eigen::Vector3d vec2) {

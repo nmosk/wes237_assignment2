@@ -1,3 +1,5 @@
+// purpose: Declare our boolean test function, test_cross
+
 #ifndef VEC_CROSS_TEST_H
 #define VEC_CROSS_TEST_H
 #include <eigen3/Eigen/Core>
