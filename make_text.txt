@@ -1,0 +1,1 @@
+g++ -Iinclude src/vecMulTest.cxx src/vecDot.cxx src/vecMain.cxx src/vecCross.cxx src/vecCrossTest.cxx -o vectest -llapack -lblas
